@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+		<title>test</title>
+		  <link rel="stylesheet" href="styles.css">
+
+	</head>
+
+	<body>
+		<div class="container">
+			<h1>Vote for your favourite language</h1>
+			<div class="btn-grid">
+				<button onclick="handle_poll('js')">JavaScript</button>
+				<button onclick="handle_poll('rs')">Rust</button>
+				<button onclick="handle_poll('py')">Python</button>
+			</div>
+
+			<div class="result">
+				<p> Javascript: <span id="js-res" /></p>
+				<p> Rust: <span id="rs-res" /></p>
+				<p> Python: <span id="py-res" /></p>
+			</div>
+		</div>
+
+		<script type="text/javascript" src="main.js"></script>
+	</body>
+</html>

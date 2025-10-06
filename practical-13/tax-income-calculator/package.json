@@ -1,0 +1,17 @@
+{
+  "name": "tax-income-calculator",
+  "version": "1.0.0",
+  "description": "Express.js tax income calculator with EJS templates",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "ejs": "^3.1.9"
+  },
+  "keywords": ["tax", "income", "calculator", "express", "ejs"],
+  "author": "",
+  "license": "ISC"
+}

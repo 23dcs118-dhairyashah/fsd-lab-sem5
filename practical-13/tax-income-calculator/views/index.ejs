@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><%= title %></h1>
+            <p>Enter your income from two sources to calculate your total income</p>
+        </header>
+
+        <main>
+            <form action="/calculate" method="POST" class="income-form">
+                <div class="form-group">
+                    <label for="income1">Primary Income Source (₹):</label>
+                    <input 
+                        type="text" 
+                        id="income1" 
+                        name="income1" 
+                        placeholder="e.g., 75000.00"
+                        value="<%= data ? data.income1 : '' %>"
+                        required
+                    >
+                    <small>Enter your primary source of income (salary, wages, etc.)</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="income2">Secondary Income Source (₹):</label>
+                    <input 
+                        type="text" 
+                        id="income2" 
+                        name="income2" 
+                        placeholder="e.g., 15000.00"
+                        value="<%= data ? data.income2 : '' %>"
+                        required
+                    >
+                    <small>Enter your secondary source of income (freelance, investments, etc.)</small>
+                </div>
+
+                <button type="submit" class="calculate-btn">Calculate Total Income</button>
+            </form>
+
+            <% if (errors) { %>
+                <div class="error-section">
+                    <h3>Please correct the following errors:</h3>
+                    <ul class="error-list">
+                        <% errors.forEach(function(error) { %>
+                            <li><%= error %></li>
+                        <% }); %>
+                    </ul>
+                </div>
+            <% } %>
+
+            <% if (result) { %>
+                <div class="result-section">
+                    <h2>Income Calculation Results</h2>
+                    <div class="result-grid">
+                        <div class="result-item">
+                            <span class="label">Primary Income:</span>
+                            <span class="amount">$<%= result.primaryIncome.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></span>
+                        </div>
+                        <div class="result-item">
+                            <span class="label">Secondary Income:</span>
+                            <span class="amount">$<%= result.secondaryIncome.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></span>
+                        </div>
+                        <div class="result-item total">
+                            <span class="label">Total Income:</span>
+                            <span class="amount">$<%= result.totalIncome.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2}) %></span>
+                        </div>
+                    </div>
+                    
+                    <div class="next-steps">
+                        <p><strong>Next Steps:</strong> Use this total income figure for your tax calculations and filing.</p>
+                        <a href="/" class="new-calculation-btn">Calculate New Income</a>
+                    </div>
+                </div>
+            <% } %>
+        </main>
+
+        <footer>
+            <p><small>This calculator is for informational purposes only. Consult a tax professional for official advice.</small></p>
+        </footer>
+    </div>
+</body>
+</html>
